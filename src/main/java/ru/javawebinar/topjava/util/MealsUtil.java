@@ -16,8 +16,8 @@ public class MealsUtil {
 
     // Default values
     public static final int CALORIES_PER_DAY = 2000;
-    public static final LocalTime TIME_START = LocalTime.of(7, 0);
-    public static final LocalTime TIME_END = LocalTime.of(21, 0);
+    public static final LocalTime TIME_START = LocalTime.MIN;
+    public static final LocalTime TIME_END = LocalTime.MAX;
 
     public static final List<Meal> meals = Arrays.asList(
             new Meal(LocalDateTime.of(2020, Month.JANUARY, 30, 10, 0), "Завтрак", 500),
@@ -27,10 +27,10 @@ public class MealsUtil {
             new Meal(LocalDateTime.of(2020, Month.JANUARY, 31, 10, 0), "Завтрак", 1000),
             new Meal(LocalDateTime.of(2020, Month.JANUARY, 31, 13, 0), "Обед", 500),
             new Meal(LocalDateTime.of(2020, Month.JANUARY, 31, 20, 0), "Ужин", 410),
-            new Meal(LocalDateTime.of(2020, Month.JANUARY, 31, 10, 0), "Завтрак", 1000),
-            new Meal(LocalDateTime.of(2020, Month.JANUARY, 31, 13, 0), "Обед", 300),
-            new Meal(LocalDateTime.of(2020, Month.JANUARY, 31, 20, 0), "Ужин", 400),
-            new Meal(LocalDateTime.of(2020, Month.JANUARY, 31, 21, 0), "Не должно попасть в таблицу", 1400)
+            new Meal(LocalDateTime.of(2020, Month.FEBRUARY, 1, 10, 0), "Завтрак", 1000),
+            new Meal(LocalDateTime.of(2020, Month.FEBRUARY, 1, 13, 0), "Обед", 300),
+            new Meal(LocalDateTime.of(2020, Month.FEBRUARY, 1, 20, 0), "Ужин", 400),
+            new Meal(LocalDateTime.of(2020, Month.FEBRUARY, 2, 0, 0), "Еда на граничное значение", 1400)
     );
 
     public static List<MealTo> getWithExceeded(List<Meal> meals) {
