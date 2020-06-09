@@ -10,7 +10,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class MealDaoImpl implements MealDao {
 
-    private static Map<Long, Meal> mealMap = new ConcurrentHashMap<>();
+    private final static Map<Long, Meal> mealMap = new ConcurrentHashMap<>();
 
 
     @Override

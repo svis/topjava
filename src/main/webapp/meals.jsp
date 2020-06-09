@@ -28,6 +28,7 @@
                 </td>
             </tr>
             <tr style="color:${meals.excess ? 'red':'green'}">
+                <p><input type="hidden" name="id" value="<c:out value="${meals.id}" />" /></p>
                 <td><%--deleting 'T' from date--%>
                     <c:forTokens items="${meals.getDateTime()}" delims="T" var="time">
                         ${time}
@@ -35,10 +36,12 @@
                 </td>
                 <td>${meals.getDescription()}</td>
                 <td>${meals.getCalories()}</td>
+                <td><a href="meals?action=update&id=${meals.getId()}">Изменить</a></td>
+                <td><a href="meals?action=delete&id=${meals.getId()}">Удалить</a></td>
             </tr>
         </c:forEach>
     </table>
 </c:if>
-
+<h3><a href="index.html">На главную</a></h3>
 </body>
 </html>

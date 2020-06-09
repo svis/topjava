@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 public class MealTo {
 
-    private final Long id;
+    public Long id;
 
     private final LocalDateTime dateTime;
 
@@ -22,6 +22,10 @@ public class MealTo {
         this.excess = excess;
     }
 
+
+    public Long getId() { return id; }
+
+    public void setId(Long id) { this.id = id;}
 
     public LocalDateTime getDateTime() {
         return dateTime;
@@ -49,4 +53,5 @@ public class MealTo {
                 ", excess=" + excess +
                 '}';
     }
+
 }
