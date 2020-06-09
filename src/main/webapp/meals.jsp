@@ -12,35 +12,29 @@
     <table class="tg">
             <%-- Head--%>
         <tr align="left">
-            <th width="500">Date</th>
+            <th width="300">Date</th>
             <th width="500">Description</th>
-            <th width="500">Calories</th>
+            <th width="100">Calories</th>
+            <th width="100">Edit</th>
+            <th width="100">Delete</th>
         </tr>
 
             <%-- Data--%>
-        <c:forEach items="${meals}" var="meal">
-            <%--Set color--%>
-            <c:choose>
-                <c:when test="${meal.excess}">
-                    <c:set var="color" value="green"/>
-                </c:when>
-                <c:otherwise>
-                    <c:set var="color" value="red"/>
-                </c:otherwise>
-            </c:choose>
+        <c:forEach items="${meals}" var="meals">
+            <jsp:useBean id="meals" type="ru.javawebinar.topjava.model.MealTo"/>
             <tr>
-                <td colspan="3">
+                <td colspan="5">
                     <hr>
                 </td>
             </tr>
-            <tr style="color: ${color}">
+            <tr style="color:${meals.excess ? 'red':'green'}">
                 <td><%--deleting 'T' from date--%>
-                    <c:forTokens items="${meal.getDateTime()}" delims="T" var="time">
+                    <c:forTokens items="${meals.getDateTime()}" delims="T" var="time">
                         ${time}
                     </c:forTokens>
                 </td>
-                <td>${meal.getDescription()}</td>
-                <td>${meal.getCalories()}</td>
+                <td>${meals.getDescription()}</td>
+                <td>${meals.getCalories()}</td>
             </tr>
         </c:forEach>
     </table>
