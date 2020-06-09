@@ -42,6 +42,6 @@
         </c:forEach>
     </table>
 </c:if>
-<h3><a href="index.html">На главную</a></h3>
+<a href="meals?action=create">Add Meal</a>
 </body>
 </html>
