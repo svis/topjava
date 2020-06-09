@@ -3,16 +3,13 @@
 <%@ page import="ru.javawebinar.topjava.util.TimeUtil" %>
 <html>
 <head>
-    <title>Редактор еды</title>
+    <title>Meal editor</title>
 </head>
 <body>
-<div><h2>Изменить параметры</h2></div>
+<div><h3>Create/Update record about meal</h3></div>
 <div>
     <jsp:useBean id="meals" scope="request" type="ru.javawebinar.topjava.model.Meal"/>
     <form method="post" action="meals">
-        <br>
-        <input hidden type="number" name="id" value="${meals.id}"/>
-        <br>
         <div>
             yyyy-mm-dd hh:mm
         </div>
@@ -28,11 +25,12 @@
         </div>
         <input type="number" name="calories" value="${meals.calories}"/>
         <br>
+        <input hidden type="number" name="id" value="${meals.id}"/>
         <br>
         <div>
-            <button type="submit" class="btn btn-success" name="save" value="1">Сохранить</button>
+            <button type="submit" class="btn btn-success" name="save" value="1">Save</button>
             <button type="button" onclick="window.history.back()" class="btn btn-info" name="CancelEdit" value="1">
-                Отмена
+                Cancel
             </button>
         </div>
     </form>
