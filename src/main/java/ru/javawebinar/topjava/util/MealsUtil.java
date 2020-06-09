@@ -4,10 +4,9 @@ import ru.javawebinar.topjava.model.Meal;
 import ru.javawebinar.topjava.model.MealTo;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.time.Month;
-import java.util.*;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import static ru.javawebinar.topjava.util.TimeUtil.isBetween;
@@ -18,21 +17,7 @@ public class MealsUtil {
     public static final int CALORIES_PER_DAY = 2000;
     public static final LocalTime TIME_START = LocalTime.MIN;
     public static final LocalTime TIME_END = LocalTime.MAX;
-/*
-    public static final List<Meal> meals = Arrays.asList(
-            new Meal(LocalDateTime.of(2020, Month.JANUARY, 30, 10, 0), "Завтрак", 500),
-            new Meal(LocalDateTime.of(2020, Month.JANUARY, 30, 13, 0), "Обед", 1000),
-            new Meal(LocalDateTime.of(2020, Month.JANUARY, 30, 20, 0), "Ужин", 500),
-            new Meal(LocalDateTime.of(2020, Month.JANUARY, 31, 0, 0), "Еда на граничное значение", 100),
-            new Meal(LocalDateTime.of(2020, Month.JANUARY, 31, 10, 0), "Завтрак", 1000),
-            new Meal(LocalDateTime.of(2020, Month.JANUARY, 31, 13, 0), "Обед", 500),
-            new Meal(LocalDateTime.of(2020, Month.JANUARY, 31, 20, 0), "Ужин", 410),
-            new Meal(LocalDateTime.of(2020, Month.FEBRUARY, 1, 10, 0), "Завтрак", 1000),
-            new Meal(LocalDateTime.of(2020, Month.FEBRUARY, 1, 13, 0), "Обед", 300),
-            new Meal(LocalDateTime.of(2020, Month.FEBRUARY, 1, 20, 0), "Ужин", 400),
-            new Meal(LocalDateTime.of(2020, Month.FEBRUARY, 2, 0, 0), "Еда на граничное значение", 1400)
-    );
-*/
+
     public static List<MealTo> getWithExceeded(List<Meal> meals) {
         return getFilteredWithExceeded(meals, TIME_START, TIME_END, CALORIES_PER_DAY);
     }

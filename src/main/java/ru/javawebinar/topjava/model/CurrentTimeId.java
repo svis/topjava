@@ -1,4 +1,4 @@
-package ru.javawebinar.topjava.dao;
+package ru.javawebinar.topjava.model;
 
 import java.util.concurrent.atomic.AtomicReference;
 
