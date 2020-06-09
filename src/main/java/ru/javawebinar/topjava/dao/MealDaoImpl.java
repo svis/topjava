@@ -2,33 +2,37 @@ package ru.javawebinar.topjava.dao;
 
 import ru.javawebinar.topjava.model.Meal;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class MealDaoImpl implements MealDao {
 
+    private static Map<Long, Meal> mealMap = new ConcurrentHashMap<>();
+
 
     @Override
-    public void addMeal(Meal meal) {
-
+    public void saveMeal(Long id, Meal meal) {
+        if (id == null) {
+            id = CurrentTimeId.nextId();
+            meal.setId(id);
+        }
+        mealMap.put(id, meal);
     }
 
     @Override
-    public void updateMeal(Meal book) {
-
+    public void deleteMeal(Long id) {
+        mealMap.remove(id);
     }
 
     @Override
-    public void deleteMeal(int id) {
-
-    }
-
-    @Override
-    public Meal getMealById(int id) {
-        return null;
+    public Meal getMealById(Long id) {
+        return mealMap.get(id);
     }
 
     @Override
     public List<Meal> listMeals() {
-        return null;
+        return new ArrayList<Meal>(mealMap.values());
     }
 }

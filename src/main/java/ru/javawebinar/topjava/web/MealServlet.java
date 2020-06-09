@@ -2,6 +2,7 @@ package ru.javawebinar.topjava.web;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ru.javawebinar.topjava.dao.InMemoryData;
 import ru.javawebinar.topjava.util.MealsUtil;
 
 import javax.servlet.ServletException;
@@ -16,7 +17,7 @@ public class MealServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         log.info("getAll");
-        request.setAttribute("meals", MealsUtil.getWithExceeded(MealsUtil.meals));
+        request.setAttribute("meals", MealsUtil.getWithExceeded(InMemoryData.mealMap.listMeals()));
         request.getRequestDispatcher("/meals.jsp").forward(request, response);
     }
 }

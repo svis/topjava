@@ -18,7 +18,7 @@ public class MealsUtil {
     public static final int CALORIES_PER_DAY = 2000;
     public static final LocalTime TIME_START = LocalTime.MIN;
     public static final LocalTime TIME_END = LocalTime.MAX;
-
+/*
     public static final List<Meal> meals = Arrays.asList(
             new Meal(LocalDateTime.of(2020, Month.JANUARY, 30, 10, 0), "Завтрак", 500),
             new Meal(LocalDateTime.of(2020, Month.JANUARY, 30, 13, 0), "Обед", 1000),
@@ -32,7 +32,7 @@ public class MealsUtil {
             new Meal(LocalDateTime.of(2020, Month.FEBRUARY, 1, 20, 0), "Ужин", 400),
             new Meal(LocalDateTime.of(2020, Month.FEBRUARY, 2, 0, 0), "Еда на граничное значение", 1400)
     );
-
+*/
     public static List<MealTo> getWithExceeded(List<Meal> meals) {
         return getFilteredWithExceeded(meals, TIME_START, TIME_END, CALORIES_PER_DAY);
     }
@@ -52,6 +52,6 @@ public class MealsUtil {
     }
 
     private static MealTo createTo(Meal meal, boolean excess) {
-        return new MealTo(meal.getDateTime(), meal.getDescription(), meal.getCalories(), excess);
+        return new MealTo(meal.getId(), meal.getDateTime(), meal.getDescription(), meal.getCalories(), excess);
     }
 }
