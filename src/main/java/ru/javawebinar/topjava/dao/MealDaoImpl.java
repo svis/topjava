@@ -1,6 +1,5 @@
 package ru.javawebinar.topjava.dao;
 
-import ru.javawebinar.topjava.util.CurrentTimeId;
 import ru.javawebinar.topjava.model.Meal;
 
 import java.util.ArrayList;
@@ -19,7 +18,7 @@ public class MealDaoImpl implements MealDao {
     public Meal save(Meal meal) {
         // create meal
         if (meal.getId() == null) {
-            meal.setId(CurrentTimeId.nextId());
+            meal.setId(nextId());
             if (mealMap.putIfAbsent(meal.getId(), meal) == null) return meal;
             return null;
         }
