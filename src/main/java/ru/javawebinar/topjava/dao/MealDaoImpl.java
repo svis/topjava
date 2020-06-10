@@ -19,11 +19,14 @@ public class MealDaoImpl implements MealDao {
         // create meal
         if (meal.getId() == null) {
             meal.setId(nextId());
-            return mealMap.put(meal.getId(), meal);
+            mealMap.put(meal.getId(), meal);
+            return meal;
         }
         // update meal
         else {
-            if (mealMap.replace(meal.getId(), meal) == null) {return null;}
+            if (mealMap.replace(meal.getId(), meal) == null) {
+                return null;
+            }
             return meal;
         }
     }
