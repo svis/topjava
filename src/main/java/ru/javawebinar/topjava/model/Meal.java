@@ -29,6 +29,10 @@ public class Meal {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public LocalDateTime getDateTime() {
         return dateTime;
     }
@@ -57,9 +61,5 @@ public class Meal {
                 ", description='" + description + '\'' +
                 ", calories=" + calories + '\'' +
                 '}';
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 }

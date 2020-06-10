@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.Month;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import static ru.javawebinar.topjava.util.TimeUtil.stringToLocalDateTime;
 
@@ -21,12 +23,11 @@ public class MealServlet extends HttpServlet {
 
     private static final Logger log = LoggerFactory.getLogger(MealServlet.class);
 
-    private MealDaoImpl mapMeal;
+    private MealDaoImpl mapMeal = new MealDaoImpl();
 
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
-        mapMeal = new MealDaoImpl();
         {
             mapMeal.save(new Meal(null, LocalDateTime.of(2020, Month.JANUARY, 30, 10, 0), "Завтрак", 500));
             mapMeal.save(new Meal(null, LocalDateTime.of(2020, Month.JANUARY, 30, 13, 0), "Обед", 1000));

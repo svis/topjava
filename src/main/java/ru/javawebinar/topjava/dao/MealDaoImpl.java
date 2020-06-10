@@ -10,21 +10,20 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public class MealDaoImpl implements MealDao {
 
-    private final static Map<Long, Meal> mealMap = new ConcurrentHashMap<>();
+    private Map<Long, Meal> mealMap = new ConcurrentHashMap<>();
 
-    private final static AtomicReference<Long> currentTime = new AtomicReference<>(System.currentTimeMillis());
+    private AtomicReference<Long> currentTime = new AtomicReference<>(System.currentTimeMillis());
 
     @Override
     public Meal save(Meal meal) {
         // create meal
         if (meal.getId() == null) {
             meal.setId(nextId());
-            if (mealMap.putIfAbsent(meal.getId(), meal) == null) return meal;
-            return null;
+            return mealMap.put(meal.getId(), meal);
         }
         // update meal
         else {
-            if (mealMap.replace(meal.getId(), meal) == null) return null;
+            if (mealMap.replace(meal.getId(), meal) == null) {return null;}
             return meal;
         }
     }
@@ -44,7 +43,7 @@ public class MealDaoImpl implements MealDao {
         return new ArrayList<>(mealMap.values());
     }
 
-    private static Long nextId() {
+    private Long nextId() {
         return currentTime.accumulateAndGet(System.currentTimeMillis(),
                 (prev, next) -> next > prev ? next : prev + 1);
     }
