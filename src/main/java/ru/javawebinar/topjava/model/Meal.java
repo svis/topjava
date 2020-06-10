@@ -6,7 +6,7 @@ import java.time.LocalTime;
 
 public class Meal {
 
-    public  Long id;
+    public Long id;
 
     private final LocalDateTime dateTime;
 
@@ -27,10 +27,6 @@ public class Meal {
 
     public Long getId() {
         return id;
-    }
-
-    public Long setId(Long id) {
-        return this.id=id;
     }
 
     public LocalDateTime getDateTime() {
@@ -59,7 +55,11 @@ public class Meal {
                 "id=" + id +
                 ", dateTime=" + dateTime +
                 ", description='" + description + '\'' +
-                ", calories=" + calories +  '\'' +
+                ", calories=" + calories + '\'' +
                 '}';
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
