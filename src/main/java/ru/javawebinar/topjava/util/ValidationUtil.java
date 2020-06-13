@@ -4,6 +4,8 @@ package ru.javawebinar.topjava.util;
 import ru.javawebinar.topjava.model.AbstractBaseEntity;
 import ru.javawebinar.topjava.util.exception.NotFoundException;
 
+import java.util.Collection;
+
 public class ValidationUtil {
 
     public static <T> T checkNotFoundWithId(T object, int id) {
@@ -30,6 +32,12 @@ public class ValidationUtil {
         if (!entity.isNew()) {
             throw new IllegalArgumentException(entity + " must be new (id=null)");
         }
+    }
+
+    public static <T> Collection<T> checkNotFoundCollection(Collection<T> collection, String msg) {
+        checkNotFound(collection != null || collection.isEmpty(), msg);
+
+        return collection;
     }
 
     public static void assureIdConsistent(AbstractBaseEntity entity, int id) {
