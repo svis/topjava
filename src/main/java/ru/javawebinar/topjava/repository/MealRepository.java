@@ -18,11 +18,7 @@ public interface MealRepository {
     // null if not found
     Meal get(int id, int userId);
 
-    List<Meal> getFilteredTime(LocalTime startTime, LocalTime endTime, int userId);
-
     List<Meal> getFilteredDate(LocalDate startDate, LocalDate endDate, int userId);
-
-    List<Meal> getFilteredDateTime(LocalDateTime startDateTime, LocalDateTime endDateTime, int userId);
 
     List<Meal> getAll(int userId);
 

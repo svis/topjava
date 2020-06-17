@@ -31,10 +31,6 @@ public class MealService {
         return checkNotFoundWithId(repository.get(id, userId), id);
     }
 
-    public List<Meal> getFilterDateTime(LocalDateTime startDateTime, LocalDateTime endDateTime, int userId) {
-        return  repository.getFilteredDateTime(startDateTime, endDateTime, userId);
-    }
-
     public List<Meal> getFilterDate(LocalDate startDate, LocalDate endDate, int userId) {
         return  repository.getFilteredDate(startDate, endDate, userId);
     }

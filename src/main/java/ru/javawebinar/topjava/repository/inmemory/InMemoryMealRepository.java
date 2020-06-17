@@ -12,10 +12,8 @@ import ru.javawebinar.topjava.web.SecurityUtil;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.Month;
 import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -24,16 +22,29 @@ import java.util.stream.Collectors;
 public class InMemoryMealRepository implements MealRepository {
     private static final Logger log = LoggerFactory.getLogger(InMemoryMealRepository.class);
     // userId --> mealId --> meal
-    private Map<Integer, Map<Integer, Meal>> repository = new ConcurrentHashMap<>();
+    private Map<Integer, Map<Integer, Meal>> repository = new HashMap<>();
     private AtomicInteger counter = new AtomicInteger(0);
 
     {
-        MealsUtil.MEALS.forEach(meal -> save(meal, SecurityUtil.authUserId()));
+        save(new Meal(LocalDateTime.of(2020, Month.JANUARY, 30, 10, 0), "Завтрак", 500),1);
+        save(new Meal(LocalDateTime.of(2020, Month.JANUARY, 30, 13, 0), "Обед", 1000),1);
+        save(new Meal(LocalDateTime.of(2020, Month.JANUARY, 30, 20, 0), "Ужин", 500),1);
+        save(new Meal(LocalDateTime.of(2020, Month.JANUARY, 31, 0, 0), "Еда на граничное значение", 100),1);
+        save(new Meal(LocalDateTime.of(2020, Month.JANUARY, 31, 10, 0), "Завтрак", 1000),1);
+        save(new Meal(LocalDateTime.of(2020, Month.JANUARY, 31, 13, 0), "Обед", 500),1);
+        save(new Meal(LocalDateTime.of(2020, Month.JANUARY, 31, 20, 0), "Ужин", 410),1);
+        save(new Meal(LocalDateTime.of(2019, Month.JANUARY, 30, 10, 0), "Завтрак", 500),2);
+        save(new Meal(LocalDateTime.of(2019, Month.JANUARY, 30, 13, 0), "Обед", 1000),2);
+        save(new Meal(LocalDateTime.of(2019, Month.JANUARY, 30, 20, 0), "Ужин", 500),2);
+        save(new Meal(LocalDateTime.of(2019, Month.JANUARY, 31, 0, 0), "Еда на граничное значение", 100),2);
+        save(new Meal(LocalDateTime.of(2019, Month.JANUARY, 31, 10, 0), "Завтрак", 1000),2);
+        save(new Meal(LocalDateTime.of(2019, Month.JANUARY, 31, 13, 0), "Обед", 500),2);
+        save(new Meal(LocalDateTime.of(2019, Month.JANUARY, 31, 20, 0), "Ужин", 410),2);
     }
 
     @Override
     public Meal save(Meal meal, int userId) {
-        Map<Integer, Meal> meals = repository.computeIfAbsent(userId, ConcurrentHashMap::new);
+        Map<Integer, Meal> meals = repository.computeIfAbsent(userId, HashMap::new);
         if (meal.isNew()) {
             meal.setId(counter.incrementAndGet());
             log.info("save {}", meal);
@@ -57,18 +68,8 @@ public class InMemoryMealRepository implements MealRepository {
     }
 
     @Override
-    public List<Meal> getFilteredTime(LocalTime startTime, LocalTime endTime, int userId) {
-        return getAllFiltered(userId, meal -> DateTimeUtil.isBetween(meal.getTime(), startTime, endTime));
-    }
-
-    @Override
     public List<Meal> getFilteredDate(LocalDate startDate, LocalDate endDate, int userId) {
         return getAllFiltered(userId, meal -> DateTimeUtil.isBetween(meal.getDate(), startDate, endDate));
-    }
-
-    @Override
-    public List<Meal> getFilteredDateTime(LocalDateTime startDateTime, LocalDateTime endDateTime, int userId) {
-        return getAllFiltered(userId, meal -> DateTimeUtil.isBetween(meal.getDateTime(), startDateTime, endDateTime));
     }
 
     @Override
