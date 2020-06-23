@@ -39,16 +39,16 @@ public class MealServiceTest {
         assertMatch(service.getAll(USER_ID), MEAL6, MEAL5, MEAL4, MEAL3, MEAL2);
     }
 
-    // тест delete на чужую еду
+    // delete with wrong user_id
     @Test(expected = NotFoundException.class)
     public void deleteNotFound() throws Exception {
-        service.delete(MEAL1_ID, 1);
+        service.delete(MEAL1_ID, ADMIN_ID);
     }
 
     @Test
     public void save() throws Exception {
         Meal created = getCreated();
-        service.create(created, USER_ID);
+        assertMatch(service.create(created, USER_ID), created);
         assertMatch(service.getAll(USER_ID), MEAL6, MEAL5, MEAL4, MEAL3, MEAL2, MEAL1, created);
     }
 
@@ -58,7 +58,7 @@ public class MealServiceTest {
         assertMatch(actual, ADMIN_MEAL1);
     }
 
-    // тест get на чужую еду
+    // get with wrong user_id
     @Test(expected = NotFoundException.class)
     public void getNotFound() throws Exception {
         service.get(MEAL1_ID, ADMIN_ID);
@@ -71,7 +71,7 @@ public class MealServiceTest {
         assertMatch(service.get(MEAL1_ID, USER_ID), updated);
     }
 
-    // тест update на чужую еду
+    // update with wrong user_id
     @Test(expected = NotFoundException.class)
     public void updateNotFound() throws Exception {
         service.update(MEAL1, ADMIN_ID);
@@ -84,7 +84,7 @@ public class MealServiceTest {
 
     @Test
     public void getBetween() throws Exception {
-        assertMatch(service.getBetweenInclusive( LocalDate.of(2020, Month.MAY, 30),
+        assertMatch(service.getBetweenInclusive(LocalDate.of(2020, Month.MAY, 30),
                 LocalDate.of(2020, Month.MAY, 30), USER_ID),
                 MEAL3, MEAL2, MEAL1);
     }
