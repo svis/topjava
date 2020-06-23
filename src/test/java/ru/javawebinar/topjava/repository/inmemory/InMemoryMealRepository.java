@@ -33,13 +33,6 @@ public class InMemoryMealRepository implements MealRepository {
     private final Map<Integer, Map<Integer, Meal>> usersMealsMap = new ConcurrentHashMap<>();
     private final AtomicInteger counter = new AtomicInteger(0);
 
-    {
-        MealsUtil.MEALS.forEach(meal -> save(meal, USER_ID));
-        save(new Meal(LocalDateTime.of(2015, Month.JUNE, 1, 14, 0), "Админ ланч", 510), ADMIN_ID);
-        save(new Meal(LocalDateTime.of(2015, Month.JUNE, 1, 21, 0), "Админ ужин", 1500), ADMIN_ID);
-    }
-
-
     @Override
     public Meal save(Meal meal, int userId) {
         Map<Integer, Meal> meals = usersMealsMap.computeIfAbsent(userId, ConcurrentHashMap::new);
@@ -53,12 +46,12 @@ public class InMemoryMealRepository implements MealRepository {
 
     @PostConstruct
     public void postConstruct() {
-        log.info("+++ PostConstruct");
+        log.info("--- PostConstruct ---");
     }
 
     @PreDestroy
     public void preDestroy() {
-        log.info("+++ PreDestroy");
+        log.info("--- PreDestroy ---");
     }
 
     @Override
