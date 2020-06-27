@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/JavaWebinar/topjava.svg?branch=master)](https://travis-ci.org/svis/topjava)
 [![Coverage Status](https://coveralls.io/repos/github/svis/topjava/badge.svg)](https://coveralls.io/github/svis/topjava)
 [![Quality](https://www.code-inspector.com/project/10355/score/svg)
-[![DepShield Badge](https://depshield.sonatype.org/badges/owner/repository/depshield.svg)](https://depshield.github.io)
+[![DepShield Badge](https://depshield.sonatype.org/badges/svis/topjava/depshield.svg)](https://depshield.github.io)
 
 Java Enterprise Online Project 
 ===============================
