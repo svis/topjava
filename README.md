@@ -1,7 +1,7 @@
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/d1a6f6d0b4404f32bd59394074a3c1b6)](https://www.codacy.com/manual/svis/topjava)
 [![Build Status](https://travis-ci.org/JavaWebinar/topjava.svg?branch=master)](https://travis-ci.org/svis/topjava)
 [![Coverage Status](https://coveralls.io/repos/github/svis/topjava/badge.svg)](https://coveralls.io/github/svis/topjava)
-[![Quality Score](https://www.code-inspector.com/project/10355/score/svg)
+[![Quality](https://www.code-inspector.com/project/10355/score/svg)
 
 Java Enterprise Online Project 
 ===============================
