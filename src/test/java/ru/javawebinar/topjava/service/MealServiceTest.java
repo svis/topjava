@@ -40,9 +40,6 @@ public class MealServiceTest {
     private static StringBuilder results = new StringBuilder();
 
     @Rule
-    public ExpectedException thrown = ExpectedException.none();
-
-    @Rule
     public Stopwatch stopwatch = new Stopwatch() {
         @Override
         protected void finished(long nanos, Description description) {
@@ -54,6 +51,15 @@ public class MealServiceTest {
 
     @Autowired
     private MealService service;
+
+    @AfterClass
+    public static void printResult() {
+        log.info("\n---------------------------------" +
+                "\nTest                 Duration, ms" +
+                "\n---------------------------------" +
+                results +
+                "\n---------------------------------");
+    }
 
     @Test
     public void delete() throws Exception {
@@ -115,16 +121,6 @@ public class MealServiceTest {
     }
 
     @Test
-    @Transactional
-    public void getBetweenInclusive() throws Exception {
-        MEAL_MATCHER.assertMatch(service.getBetweenInclusive(
-                LocalDate.of(2020, Month.JANUARY, 30),
-                LocalDate.of(2020, Month.JANUARY, 30), USER_ID),
-                MEAL4, MEAL3, MEAL2, MEAL1);
-    }
-
-    @Test
-    @Transactional
     public void getBetweenHalfOpen() throws Exception {
         MEAL_MATCHER.assertMatch(service.getBetweenHalfOpen(
                 LocalDate.of(2020, Month.JANUARY, 30),
@@ -134,15 +130,6 @@ public class MealServiceTest {
 
     @Test
     public void getBetweenWithNullDates() throws Exception {
-        MEAL_MATCHER.assertMatch(service.getBetweenInclusive(null, null, USER_ID), MEALS);
-    }
-
-    @AfterClass
-    public static void printResult() {
-        log.info("\n---------------------------------" +
-                "\nTest                 Duration, ms" +
-                "\n---------------------------------" +
-                results +
-                "\n---------------------------------");
+        MEAL_MATCHER.assertMatch(service.getBetweenHalfOpen(null, null, USER_ID), MEALS);
     }
 }

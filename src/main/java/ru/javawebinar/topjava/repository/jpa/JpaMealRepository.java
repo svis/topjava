@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
+@Transactional(readOnly = true)
 public class JpaMealRepository implements MealRepository {
 
     @PersistenceContext
@@ -53,13 +54,6 @@ public class JpaMealRepository implements MealRepository {
         return em.createNamedQuery(Meal.ALL_SORTED, Meal.class)
                 .setParameter("userId", userId)
                 .getResultList();
-    }
-
-    public List<Meal> getBetweenInclusive(LocalDateTime startDateTime, LocalDateTime endDateTime, int userId) {
-        return em.createNamedQuery(Meal.GET_BETWEEN, Meal.class)
-                .setParameter("userId", userId)
-                .setParameter("startDate", startDateTime)
-                .setParameter("endDate", endDateTime).getResultList();
     }
 
     @Override
