@@ -1,8 +1,6 @@
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/d1a6f6d0b4404f32bd59394074a3c1b6)](https://www.codacy.com/manual/svis/topjava)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/346ce60c65094df29f6f8846e71a2db2)](https://www.codacy.com/manual/sergey.visker/topjava?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=svis/topjava&amp;utm_campaign=Badge_Grade)
 [![Build Status](https://travis-ci.org/JavaWebinar/topjava.svg?branch=master)](https://travis-ci.org/svis/topjava)
-[![Coverage Status](https://coveralls.io/repos/github/svis/topjava/badge.svg)](https://coveralls.io/github/svis/topjava)
 ![](https://www.code-inspector.com/project/10355/score/svg)
-[![DepShield Badge](https://depshield.sonatype.org/badges/svis/topjava/depshield.svg)](https://depshield.github.io)
 
 Java Enterprise Online Project 
 ===============================
