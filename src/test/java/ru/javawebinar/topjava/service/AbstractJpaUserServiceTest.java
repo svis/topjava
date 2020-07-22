@@ -13,15 +13,6 @@ import java.util.Date;
 
 abstract public class AbstractJpaUserServiceTest extends AbstractUserServiceTest {
 
-    @Autowired
-    private JpaUtil jpaUtil;
-
-    @Before
-    @Override
-    public void setUp() throws Exception {
-        super.setUp();
-        jpaUtil.clear2ndLevelHibernateCache();
-    }
 
     @Test
     public void  createWithException() throws Exception {
