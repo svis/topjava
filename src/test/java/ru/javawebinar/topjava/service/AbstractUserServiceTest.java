@@ -9,12 +9,7 @@ import ru.javawebinar.topjava.model.Role;
 import ru.javawebinar.topjava.model.User;
 import ru.javawebinar.topjava.util.exception.NotFoundException;
 
-import javax.validation.ConstraintViolationException;
-import java.util.Date;
 import java.util.List;
-import java.util.Set;
-
-import ru.javawebinar.topjava.repository.JpaUtil;
 
 import static org.junit.Assert.assertThrows;
 import static ru.javawebinar.topjava.UserTestData.*;
@@ -38,9 +33,9 @@ public abstract class AbstractUserServiceTest extends AbstractServiceTest {
 
     @Test
     public void create() throws Exception {
-        User created = service.create(getNew());
-        int newId = created.id();
         User newUser = getNew();
+        User created = service.create(new User(newUser));
+        int newId = created.id();
         newUser.setId(newId);
         USER_MATCHER.assertMatch(created, newUser);
         USER_MATCHER.assertMatch(service.get(newId), newUser);
@@ -65,8 +60,8 @@ public abstract class AbstractUserServiceTest extends AbstractServiceTest {
 
     @Test
     public void get() throws Exception {
-        User user = service.get(USER_ID);
-        USER_MATCHER.assertMatch(user, USER);
+        User user = service.get(ADMIN_ID);
+        USER_MATCHER.assertMatch(user, ADMIN);
     }
 
     @Test
@@ -84,7 +79,7 @@ public abstract class AbstractUserServiceTest extends AbstractServiceTest {
     public void update() throws Exception {
         User updated = getUpdated();
         service.update(updated);
-        USER_MATCHER.assertMatch(service.get(USER_ID), getUpdated());
+        USER_MATCHER.assertMatch(service.get(ADMIN_ID), getUpdated());
     }
 
     @Test
