@@ -16,7 +16,7 @@ import static ru.javawebinar.topjava.UserTestData.*;
 class RootControllerTest extends AbstractControllerTest {
 
     @Test
-    void getUsers() throws Exception {
+    void testUsers() throws Exception {
         perform(get("/users"))
                 .andDo(print())
                 .andExpect(status().isOk())
