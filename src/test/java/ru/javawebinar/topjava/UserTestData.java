@@ -2,7 +2,6 @@ package ru.javawebinar.topjava;
 
 import ru.javawebinar.topjava.model.Role;
 import ru.javawebinar.topjava.model.User;
-import ru.javawebinar.topjava.to.MealTo;
 
 import java.util.Collections;
 import java.util.Date;
@@ -10,8 +9,7 @@ import java.util.Date;
 import static ru.javawebinar.topjava.model.AbstractBaseEntity.START_SEQ;
 
 public class UserTestData {
-    public static TestMatcher<User> USER_MATCHER = TestMatcher.usingFieldsComparator(User.class, "registered", "meals");
-    public static TestMatcher<MealTo> MEAL_TO_MATCHER = TestMatcher.usingEqualsComparator(MealTo.class);
+    public static TestMatcher<User> USER_MATCHER = TestMatcher.usingFieldsWithIgnoringComparator(User.class, "registered","meals");
 
     public static final int NOT_FOUND = 10;
     public static final int USER_ID = START_SEQ;

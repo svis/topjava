@@ -22,7 +22,7 @@ public class TestMatcher<T> {
         return new TestMatcher<>(clazz, true);
     }
 
-    public static <T> TestMatcher<T> usingFieldsComparator(Class<T> clazz, String... fieldsToIgnore) {
+    public static <T> TestMatcher<T> usingFieldsWithIgnoringComparator(Class<T> clazz, String... fieldsToIgnore) {
         return new TestMatcher<>(clazz, false, fieldsToIgnore);
     }
 
