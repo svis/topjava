@@ -1,14 +1,14 @@
 function updateFilteredTable() {
     $.ajax({
         type: "GET",
-        url: "profile/meals/filter",
+        url: "ui/profile/meals/filter",
         data: $("#filter").serialize()
     }).done(updateTableByData);
 }
 
 $(function () {
     makeEditable({
-        ajaxUrl: "profile/meals/",
+        ajaxUrl: "ui/profile/meals/",
         datatableApi: $("#datatable").DataTable({
             "paging": false,
             "info": true,
