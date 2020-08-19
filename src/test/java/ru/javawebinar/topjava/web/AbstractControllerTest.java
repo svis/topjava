@@ -33,6 +33,8 @@ abstract public class AbstractControllerTest {
     private static final CharacterEncodingFilter CHARACTER_ENCODING_FILTER = new CharacterEncodingFilter();
 
     @Autowired
+    protected MessageUtil messageUtil;
+    @Autowired
     public Environment env;
 
     static {
@@ -60,5 +62,10 @@ abstract public class AbstractControllerTest {
 
     public ResultActions perform(MockHttpServletRequestBuilder builder) throws Exception {
         return mockMvc.perform(builder);
+    }
+
+
+    protected String getMessage(String code) {
+        return messageUtil.getMessage(code, MessageUtil.RU_LOCALE);
     }
 }
